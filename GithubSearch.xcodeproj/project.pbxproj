@@ -3,18 +3,21 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		7B58F2DA25517BBA0040728E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B58F2D925517BBA0040728E /* AppDelegate.swift */; };
 		7B58F2DC25517BBA0040728E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B58F2DB25517BBA0040728E /* SceneDelegate.swift */; };
-		7B58F2DE25517BBA0040728E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B58F2DD25517BBA0040728E /* ViewController.swift */; };
+		7B58F2DE25517BBA0040728E /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B58F2DD25517BBA0040728E /* SearchViewController.swift */; };
 		7B58F2E125517BBA0040728E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7B58F2DF25517BBA0040728E /* Main.storyboard */; };
 		7B58F2E325517BBD0040728E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7B58F2E225517BBD0040728E /* Assets.xcassets */; };
 		7B58F2E625517BBD0040728E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7B58F2E425517BBD0040728E /* LaunchScreen.storyboard */; };
 		7B58F2F125517BBD0040728E /* GithubSearchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B58F2F025517BBD0040728E /* GithubSearchTests.swift */; };
 		7B58F2FC25517BBD0040728E /* GithubSearchUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B58F2FB25517BBD0040728E /* GithubSearchUITests.swift */; };
+		7B58F31B255181400040728E /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B58F31A255181400040728E /* TableViewCell.swift */; };
+		7B58F3212551862E0040728E /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B58F3202551862E0040728E /* SearchViewModel.swift */; };
+		7B58F32F255186780040728E /* ViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B58F32E255186770040728E /* ViewModelProtocol.swift */; };
 		A1E60BAFA15EF04F9EE1B627 /* Pods_GithubSearch_GithubSearchUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D7FC240D0DB0E93C6C46C04 /* Pods_GithubSearch_GithubSearchUITests.framework */; };
 		A89CE9098EE889B0963162B1 /* Pods_GithubSearchTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB52ABDD2C4C51FB4ED6466D /* Pods_GithubSearchTests.framework */; };
 		E88BFF7C2AFF29DE14E98F88 /* Pods_GithubSearch.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E79B4B74731D48C8B52F0D1 /* Pods_GithubSearch.framework */; };
@@ -47,7 +50,7 @@
 		7B58F2D625517BBA0040728E /* GithubSearch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GithubSearch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7B58F2D925517BBA0040728E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7B58F2DB25517BBA0040728E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		7B58F2DD25517BBA0040728E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		7B58F2DD25517BBA0040728E /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		7B58F2E025517BBA0040728E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		7B58F2E225517BBD0040728E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7B58F2E525517BBD0040728E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -58,6 +61,9 @@
 		7B58F2F725517BBD0040728E /* GithubSearchUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GithubSearchUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7B58F2FB25517BBD0040728E /* GithubSearchUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GithubSearchUITests.swift; sourceTree = "<group>"; };
 		7B58F2FD25517BBD0040728E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7B58F31A255181400040728E /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
+		7B58F3202551862E0040728E /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
+		7B58F32E255186770040728E /* ViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelProtocol.swift; sourceTree = "<group>"; };
 		D2DED2E69C62A297491F4260 /* Pods-GithubSearch-GithubSearchUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GithubSearch-GithubSearchUITests.release.xcconfig"; path = "Target Support Files/Pods-GithubSearch-GithubSearchUITests/Pods-GithubSearch-GithubSearchUITests.release.xcconfig"; sourceTree = "<group>"; };
 		E0498D22AD5B958F871A9EF6 /* Pods-GithubSearchTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GithubSearchTests.release.xcconfig"; path = "Target Support Files/Pods-GithubSearchTests/Pods-GithubSearchTests.release.xcconfig"; sourceTree = "<group>"; };
 		EB52ABDD2C4C51FB4ED6466D /* Pods_GithubSearchTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GithubSearchTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -126,10 +132,10 @@
 		7B58F2D825517BBA0040728E /* GithubSearch */ = {
 			isa = PBXGroup;
 			children = (
+				7B58F31F255186160040728E /* ViewModel */,
+				7B58F3192551811B0040728E /* UI */,
 				7B58F2D925517BBA0040728E /* AppDelegate.swift */,
 				7B58F2DB25517BBA0040728E /* SceneDelegate.swift */,
-				7B58F2DD25517BBA0040728E /* ViewController.swift */,
-				7B58F2DF25517BBA0040728E /* Main.storyboard */,
 				7B58F2E225517BBD0040728E /* Assets.xcassets */,
 				7B58F2E425517BBD0040728E /* LaunchScreen.storyboard */,
 				7B58F2E725517BBD0040728E /* Info.plist */,
@@ -155,6 +161,25 @@
 			path = GithubSearchUITests;
 			sourceTree = "<group>";
 		};
+		7B58F3192551811B0040728E /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				7B58F2DD25517BBA0040728E /* SearchViewController.swift */,
+				7B58F2DF25517BBA0040728E /* Main.storyboard */,
+				7B58F31A255181400040728E /* TableViewCell.swift */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		7B58F31F255186160040728E /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				7B58F3202551862E0040728E /* SearchViewModel.swift */,
+				7B58F32E255186770040728E /* ViewModelProtocol.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		CB51185AB21EF8D218B42214 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -165,7 +190,6 @@
 				1F2FE94BDF9840E107FC7284 /* Pods-GithubSearchTests.debug.xcconfig */,
 				E0498D22AD5B958F871A9EF6 /* Pods-GithubSearchTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -407,7 +431,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7B58F2DE25517BBA0040728E /* ViewController.swift in Sources */,
+				7B58F3212551862E0040728E /* SearchViewModel.swift in Sources */,
+				7B58F2DE25517BBA0040728E /* SearchViewController.swift in Sources */,
+				7B58F32F255186780040728E /* ViewModelProtocol.swift in Sources */,
+				7B58F31B255181400040728E /* TableViewCell.swift in Sources */,
 				7B58F2DA25517BBA0040728E /* AppDelegate.swift in Sources */,
 				7B58F2DC25517BBA0040728E /* SceneDelegate.swift in Sources */,
 			);
