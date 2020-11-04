@@ -64,12 +64,12 @@ struct Repository: Codable {
     let hasIssues, hasProjects, hasDownloads, hasWiki: Bool
     let hasPages: Bool
     let forksCount: Int
-    let mirrorURL: JSONNull?
+    let mirrorURL: String?
     let archived, disabled: Bool
     let openIssuesCount: Int
     let license: License?
     let forks, openIssues, watchers: Int
-    let defaultBranch: DefaultBranch
+    let defaultBranch: String
     let score: Double
 
     enum CodingKeys: String, CodingKey {
@@ -146,10 +146,6 @@ struct Repository: Codable {
     }
 }
 
-enum DefaultBranch: String, Codable {
-    case master = "master"
-}
-
 // MARK: - License
 struct License: Codable {
     let key, name, spdxID: String
@@ -203,31 +199,4 @@ struct Owner: Codable {
 enum TypeEnum: String, Codable {
     case organization = "Organization"
     case user = "User"
-}
-
-// MARK: - Encode/decode helpers
-
-class JSONNull: Codable, Hashable {
-
-    public static func == (lhs: JSONNull, rhs: JSONNull) -> Bool {
-        return true
-    }
-    
-    func hash(into hasher: inout Hasher) {
-        hasher.combine(0)
-    }
-    
-    public init() {}
-
-    public required init(from decoder: Decoder) throws {
-        let container = try decoder.singleValueContainer()
-        if !container.decodeNil() {
-            throw DecodingError.typeMismatch(JSONNull.self, DecodingError.Context(codingPath: decoder.codingPath, debugDescription: "Wrong type for JSONNull"))
-        }
-    }
-
-    public func encode(to encoder: Encoder) throws {
-        var container = encoder.singleValueContainer()
-        try container.encodeNil()
-    }
 }
