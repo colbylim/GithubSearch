@@ -23,8 +23,13 @@ class TableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
 
-    func configure(name: String, desc: String) {
+    func configure(name: String, desc: String?) {
         nameLbl.text = name
-        descLbl.text = desc
+        
+        if let text = desc, text.isEmpty == false {
+            descLbl.text = text
+        } else {
+            descLbl.text = "정보없음"
+        }
     }
 }

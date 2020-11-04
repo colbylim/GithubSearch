@@ -60,7 +60,7 @@ class SearchViewController: UIViewController {
         
         viewModel.repositories.asObservable()
             .bind(to: tableView.rx.items(cellIdentifier: "TableViewCell", cellType: TableViewCell.self)) { (_, element, cell) in
-                cell.configure(name: element, desc: element)
+                cell.configure(name: element.name, desc: element.itemDescription)
         }.disposed(by: disposeBag)
         
         viewModel.viewStateStream.subscribe(onNext: { [weak self] (result) in

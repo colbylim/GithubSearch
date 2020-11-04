@@ -19,7 +19,7 @@ class SearchViewModel: ViewStateStreamModel<SearchViewStateType> {
     private var page: Int = 1
     private var isEnd: Bool = false
     
-    let repositories = BehaviorRelay<[String]>(value: [])
+    let repositories = BehaviorRelay<[Repository]>(value: [])
     let searchText = BehaviorRelay<String>(value: "")
     
     override init() {
@@ -50,16 +50,25 @@ class SearchViewModel: ViewStateStreamModel<SearchViewStateType> {
     }
     
     func fetch(_ text: String) {
+        if text.isEmpty == true { return }
+        
         if isEnd == true {
             return
         }
 
-        // TODO: API CALL
-        var temp = [String]()
-        for i in 0 ..< 10 {
-            temp.append("TEST\(i)")
-        }
-        repositories.accept(temp)
-        isEnd = true
+        APIManager.call(SearchAPI.get(query: text, page: page))
+            .subscribe { [weak self] (res) in
+                guard let self = self else { return }
+                self.page += 1
+                if self.repositories.value.count + res.items.count == res.totalCount {
+                    self.isEnd = true
+                }
+                
+                if !res.items.isEmpty {
+                    self.repositories.accept(self.repositories.value + res.items)
+                }
+            } onError: { [weak self] (error) in
+                self?.viewState = .error(message: error.localizedDescription)
+            }.disposed(by: disposeBag)
     }
 }

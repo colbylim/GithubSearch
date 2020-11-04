@@ -70,7 +70,7 @@ struct Repository: Codable {
     let license: License?
     let forks, openIssues, watchers: Int
     let defaultBranch: DefaultBranch
-    let score: Int
+    let score: Double
 
     enum CodingKeys: String, CodingKey {
         case id
