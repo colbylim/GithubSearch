@@ -11,6 +11,7 @@ import RxCocoa
 
 enum SearchViewStateType {
     case ok
+    case loading(isHidden: Bool)
     case message(message: String?)
     case error(message: String?)
 }
@@ -56,9 +57,13 @@ class SearchViewModel: ViewStateStreamModel<SearchViewStateType> {
             return
         }
 
+        viewState = .loading(isHidden: false)
+        
         APIManager.call(SearchAPI.get(query: text, page: page))
             .subscribe { [weak self] (res) in
                 guard let self = self else { return }
+                self.viewState = .loading(isHidden: true)
+                
                 self.page += 1
                 if self.repositories.value.count + res.items.count == res.totalCount {
                     self.isEnd = true
@@ -68,6 +73,13 @@ class SearchViewModel: ViewStateStreamModel<SearchViewStateType> {
                     self.repositories.accept(self.repositories.value + res.items)
                 }
             } onError: { [weak self] (error) in
+                self?.viewState = .loading(isHidden: true)
+                
+                if let code = error.asAFError?.responseCode, code == 403 {
+                    self?.viewState = .error(message: "API rate limit exceeded")
+                    return
+                }
+                
                 self?.viewState = .error(message: error.localizedDescription)
             }.disposed(by: disposeBag)
     }

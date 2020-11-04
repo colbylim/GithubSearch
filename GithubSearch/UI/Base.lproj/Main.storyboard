@@ -61,20 +61,38 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fMb-oG-bZB">
+                                <rect key="frame" x="0.0" y="100" width="375" height="712"/>
+                                <subviews>
+                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="NI9-AD-tKb">
+                                        <rect key="frame" x="169" y="337.66666666666669" width="37" height="37"/>
+                                    </activityIndicatorView>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="NI9-AD-tKb" firstAttribute="centerY" secondItem="fMb-oG-bZB" secondAttribute="centerY" id="7aw-rK-afL"/>
+                                    <constraint firstItem="NI9-AD-tKb" firstAttribute="centerX" secondItem="fMb-oG-bZB" secondAttribute="centerX" id="Yez-6t-gvg"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="fMb-oG-bZB" firstAttribute="bottom" secondItem="t6q-7Q-GAF" secondAttribute="bottom" id="0WY-UO-x2v"/>
+                            <constraint firstItem="fMb-oG-bZB" firstAttribute="leading" secondItem="t6q-7Q-GAF" secondAttribute="leading" id="An9-QE-Ins"/>
                             <constraint firstItem="4gT-ny-qyt" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="BbN-9G-vck"/>
+                            <constraint firstItem="fMb-oG-bZB" firstAttribute="top" secondItem="t6q-7Q-GAF" secondAttribute="top" id="JaN-i2-JR8"/>
                             <constraint firstItem="4gT-ny-qyt" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="PZf-vw-A20"/>
                             <constraint firstAttribute="bottom" secondItem="t6q-7Q-GAF" secondAttribute="bottom" id="TEL-98-L6f"/>
                             <constraint firstItem="t6q-7Q-GAF" firstAttribute="top" secondItem="4gT-ny-qyt" secondAttribute="bottom" id="TeN-P9-OEE"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="t6q-7Q-GAF" secondAttribute="trailing" id="YrN-EH-FHj"/>
+                            <constraint firstItem="fMb-oG-bZB" firstAttribute="trailing" secondItem="t6q-7Q-GAF" secondAttribute="trailing" id="ZXi-SQ-FSx"/>
                             <constraint firstItem="4gT-ny-qyt" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="qkc-AS-dEv"/>
                             <constraint firstItem="t6q-7Q-GAF" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="yfj-dT-cAB"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="loadingView" destination="fMb-oG-bZB" id="Nah-GI-wjv"/>
                         <outlet property="searchBar" destination="4gT-ny-qyt" id="5nh-3d-ggg"/>
                         <outlet property="tableView" destination="t6q-7Q-GAF" id="0m3-Sv-CA2"/>
                     </connections>

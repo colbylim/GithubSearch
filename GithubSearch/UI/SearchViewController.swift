@@ -13,6 +13,7 @@ class SearchViewController: UIViewController {
 
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var loadingView: UIView!
     
     let disposeBag = DisposeBag()
     let viewModel = SearchViewModel()
@@ -66,6 +67,9 @@ class SearchViewController: UIViewController {
         viewModel.viewStateStream.subscribe(onNext: { [weak self] (result) in
             guard let self = self else { return }
             switch result {
+            case let .loading(isHidden):
+                self.loadingView.isHidden = isHidden
+                
             case let .message(message):
                 self.showAlert(message)
                 
