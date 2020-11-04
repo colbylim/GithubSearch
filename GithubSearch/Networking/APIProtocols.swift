@@ -24,7 +24,7 @@ protocol BaseAPIProtocol {
 extension BaseAPIProtocol {
 
     var baseURL: String {
-        return "https://developer.github.com/v3/"
+        return "https://api.github.com/search/"
     }
 }
 

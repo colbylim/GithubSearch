@@ -20,7 +20,7 @@ enum SearchAPI: BaseRequestProtocol {
     }
     
     var path: APIUrls {
-        return .search
+        return .repositories
     }
     
     var headers: HttpHeaders? {

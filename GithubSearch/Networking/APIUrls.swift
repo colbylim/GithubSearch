@@ -8,5 +8,5 @@
 import Foundation
 
 enum APIUrls: String {
-    case search
+    case repositories
 }
