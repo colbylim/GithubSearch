@@ -26,8 +26,9 @@ class SearchViewModel: ViewStateStreamModel<SearchViewStateType> {
     
     override init() {
         super.init()
-
+        
         searchText.asObservable()
+            .skip(1)
             .subscribe(onNext: { [weak self] t in
                 self?.search(t)
             })

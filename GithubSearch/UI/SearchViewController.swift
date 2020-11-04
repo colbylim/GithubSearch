@@ -49,6 +49,7 @@ class SearchViewController: UIViewController {
             .disposed(by: disposeBag)
         
         searchBar.rx.text.orEmpty
+            .skip(1)
             .debounce(.milliseconds(1000), scheduler: MainScheduler.instance)
             .distinctUntilChanged()
             .flatMapLatest({ Observable.just($0) })
@@ -60,11 +61,17 @@ class SearchViewController: UIViewController {
             .subscribe { [weak self] (_, indexPath) in
                 self?.viewModel.fetchNextPage(indexPath.row)
             }.disposed(by: disposeBag)
-        
-        viewModel.repositories.asObservable()
-            .bind(to: tableView.rx.items(cellIdentifier: "TableViewCell", cellType: TableViewCell.self)) { (_, element, cell) in
-                cell.configure(name: element.name, desc: element.itemDescription)
-        }.disposed(by: disposeBag)
+                
+//        UITableViewAlertForLayoutOutsideViewHierarchy warning이 발생함
+//        해당 이슈는 RxSwift의 이슈로 https://github.com/ReactiveX/RxSwift/pull/2076에 보고되어 있음.
+//        임시방편으로 DispatchQueue.main.async안에서 바인딩하여 수정함
+        DispatchQueue.main.async { [weak self] in
+            guard let self = self else { return }
+            self.viewModel.repositories.asObservable()
+                .bind(to: self.tableView.rx.items(cellIdentifier: "TableViewCell", cellType: TableViewCell.self)) { (_, element, cell) in
+                    cell.configure(name: element.name, desc: element.itemDescription)
+                }.disposed(by: self.disposeBag)
+        }
         
         viewModel.hiddenEmptyView
             .bind(to: emptyView.rx.isHidden)
