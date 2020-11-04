@@ -61,6 +61,23 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Owa-xn-hKF">
+                                <rect key="frame" x="0.0" y="100" width="375" height="712"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="검색결과가 없습니다" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tEe-kT-PvC">
+                                        <rect key="frame" x="10" y="200" width="355" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="tEe-kT-PvC" secondAttribute="trailing" constant="10" id="0f8-j0-VQA"/>
+                                    <constraint firstItem="tEe-kT-PvC" firstAttribute="top" secondItem="Owa-xn-hKF" secondAttribute="top" constant="200" id="GF8-nB-0Ey"/>
+                                    <constraint firstItem="tEe-kT-PvC" firstAttribute="leading" secondItem="Owa-xn-hKF" secondAttribute="leading" constant="10" id="Pij-QS-8Ok"/>
+                                </constraints>
+                            </view>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fMb-oG-bZB">
                                 <rect key="frame" x="0.0" y="100" width="375" height="712"/>
                                 <subviews>
@@ -82,16 +99,21 @@
                             <constraint firstItem="fMb-oG-bZB" firstAttribute="leading" secondItem="t6q-7Q-GAF" secondAttribute="leading" id="An9-QE-Ins"/>
                             <constraint firstItem="4gT-ny-qyt" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="BbN-9G-vck"/>
                             <constraint firstItem="fMb-oG-bZB" firstAttribute="top" secondItem="t6q-7Q-GAF" secondAttribute="top" id="JaN-i2-JR8"/>
+                            <constraint firstItem="Owa-xn-hKF" firstAttribute="trailing" secondItem="t6q-7Q-GAF" secondAttribute="trailing" id="NNh-9v-BMi"/>
                             <constraint firstItem="4gT-ny-qyt" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="PZf-vw-A20"/>
                             <constraint firstAttribute="bottom" secondItem="t6q-7Q-GAF" secondAttribute="bottom" id="TEL-98-L6f"/>
+                            <constraint firstItem="Owa-xn-hKF" firstAttribute="top" secondItem="t6q-7Q-GAF" secondAttribute="top" id="TMZ-eC-6js"/>
                             <constraint firstItem="t6q-7Q-GAF" firstAttribute="top" secondItem="4gT-ny-qyt" secondAttribute="bottom" id="TeN-P9-OEE"/>
+                            <constraint firstItem="Owa-xn-hKF" firstAttribute="bottom" secondItem="t6q-7Q-GAF" secondAttribute="bottom" id="XLN-gE-bCV"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="t6q-7Q-GAF" secondAttribute="trailing" id="YrN-EH-FHj"/>
                             <constraint firstItem="fMb-oG-bZB" firstAttribute="trailing" secondItem="t6q-7Q-GAF" secondAttribute="trailing" id="ZXi-SQ-FSx"/>
                             <constraint firstItem="4gT-ny-qyt" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="qkc-AS-dEv"/>
+                            <constraint firstItem="Owa-xn-hKF" firstAttribute="leading" secondItem="t6q-7Q-GAF" secondAttribute="leading" id="xUx-JV-Hxc"/>
                             <constraint firstItem="t6q-7Q-GAF" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="yfj-dT-cAB"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="emptyView" destination="Owa-xn-hKF" id="rON-3t-zDe"/>
                         <outlet property="loadingView" destination="fMb-oG-bZB" id="Nah-GI-wjv"/>
                         <outlet property="searchBar" destination="4gT-ny-qyt" id="5nh-3d-ggg"/>
                         <outlet property="tableView" destination="t6q-7Q-GAF" id="0m3-Sv-CA2"/>

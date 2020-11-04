@@ -22,6 +22,7 @@ class SearchViewModel: ViewStateStreamModel<SearchViewStateType> {
     
     let repositories = BehaviorRelay<[Repository]>(value: [])
     let searchText = BehaviorRelay<String>(value: "")
+    let hiddenEmptyView = BehaviorRelay<Bool>(value: true)
     
     override init() {
         super.init()
@@ -51,7 +52,10 @@ class SearchViewModel: ViewStateStreamModel<SearchViewStateType> {
     }
     
     func fetch(_ text: String) {
-        if text.isEmpty == true { return }
+        if text.isEmpty == true {
+            hiddenEmptyView.accept(true)
+            return
+        }
         
         if isEnd == true {
             return
@@ -63,6 +67,10 @@ class SearchViewModel: ViewStateStreamModel<SearchViewStateType> {
             .subscribe { [weak self] (res) in
                 guard let self = self else { return }
                 self.viewState = .loading(isHidden: true)
+                
+                if self.page == 1 {
+                    self.hiddenEmptyView.accept(res.totalCount == 0 ? false : true)
+                }
                 
                 self.page += 1
                 if self.repositories.value.count + res.items.count == res.totalCount {

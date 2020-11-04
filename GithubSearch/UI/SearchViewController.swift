@@ -14,6 +14,7 @@ class SearchViewController: UIViewController {
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var loadingView: UIView!
+    @IBOutlet weak var emptyView: UIView!
     
     let disposeBag = DisposeBag()
     let viewModel = SearchViewModel()
@@ -32,13 +33,17 @@ class SearchViewController: UIViewController {
     }
 
     func configure() {
-        // view tap, 키패드 searchButton 클릭, collectionView 스크롤 시 키패드 숨김
+        tableView.estimatedRowHeight = 60.0
+        tableView.rowHeight = UITableView.automaticDimension
+        
+        // view tap, 키패드 searchButton 클릭시 키패드 숨김
+        tableView.keyboardDismissMode = .onDrag
+        
         let tap: UITapGestureRecognizer = UITapGestureRecognizer()
         tap.cancelsTouchesInView = false
         view.addGestureRecognizer(tap)
                 
         Observable.merge(tap.rx.event.map({ _ in }).asObservable(),
-                         tableView.rx.contentOffset.map({ _ in }).asObservable(),
                          searchBar.rx.searchButtonClicked.asObservable())
             .bind(to: resignFirstResponder)
             .disposed(by: disposeBag)
@@ -56,13 +61,14 @@ class SearchViewController: UIViewController {
                 self?.viewModel.fetchNextPage(indexPath.row)
             }.disposed(by: disposeBag)
         
-        tableView.rx.setDelegate(self)
-            .disposed(by: disposeBag)
-        
         viewModel.repositories.asObservable()
             .bind(to: tableView.rx.items(cellIdentifier: "TableViewCell", cellType: TableViewCell.self)) { (_, element, cell) in
                 cell.configure(name: element.name, desc: element.itemDescription)
         }.disposed(by: disposeBag)
+        
+        viewModel.hiddenEmptyView
+            .bind(to: emptyView.rx.isHidden)
+            .disposed(by: disposeBag)
         
         viewModel.viewStateStream.subscribe(onNext: { [weak self] (result) in
             guard let self = self else { return }
@@ -94,11 +100,5 @@ class SearchViewController: UIViewController {
         return Binder(self) { me, _ in
             me.searchBar.resignFirstResponder()
         }.asObserver()
-    }
-}
-
-extension SearchViewController: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return UITableView.automaticDimension
     }
 }
