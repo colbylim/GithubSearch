@@ -13,6 +13,7 @@ target 'GithubSearch' do
   target 'GithubSearchTests' do
     inherit! :search_paths
     # Pods for testing
+    pod 'RxTest'
   end
 
   target 'GithubSearchUITests' do
